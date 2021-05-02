@@ -24,8 +24,6 @@ module.exports = class HorseService {
   static async getHorsesByName(horseName) {
     try {
 
-      console.log(horseName);
-
       const allHorses = await Horse.findAndCountAll({
         where: {
           name: {
@@ -56,4 +54,35 @@ module.exports = class HorseService {
       console.log(`Could not delete todo ${error}`);
     }
   }
+
+  static async getHorsesByParents(parentName) {
+    try {
+      const horses = await Horse.findAndCountAll({
+        where: {
+          [Op.or]: [
+            {
+              father: parentName
+            },
+            {
+              mother: parentName
+            }
+          ]
+        }
+      });
+      return horses;
+    } catch (error) {
+      console.log(`Could not fetch horses ${error}`);
+    }
+  }
+
+  static async updateHorse(id, horse) {
+    try {
+      const updateResponse = await Horse.update(horse, { where: { id: id } });
+
+      return updateResponse;
+    } catch (error) {
+      console.log(`Could not update Horse ${error}`);
+    }
+  }
+
 }

@@ -1,5 +1,5 @@
 const app = require("./app");
-
+/*
 //Sequelize: sincroniza o banco de dados
 (async () => {
   const db = require('./db/PostgreeDb');
@@ -10,7 +10,7 @@ const app = require("./app");
   } catch (error) {
     console.log(error);
   }
-})();
+})();*/
 
 
 const port = process.env.PORT || 3000;
