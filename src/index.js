@@ -1,16 +1,16 @@
 const app = require("./app");
-/*
+
 //Sequelize: sincroniza o banco de dados
 (async () => {
-    const database = require('./DataBase/PostgreeDb');
- 
-    try {
-        const resultado = await database.sync();
-        //console.log(resultado);
-    } catch (error) {
-        console.log(error);
-    }
-})();*/
+  const db = require('./db/PostgreeDb');
+
+  try {
+    const resultado = await db.sync();
+    //console.log(resultado);
+  } catch (error) {
+    console.log(error);
+  }
+})();
 
 
 const port = process.env.PORT || 3000;
