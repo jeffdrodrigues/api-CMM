@@ -55,7 +55,7 @@ module.exports = class HorseService {
     }
   }
 
-  static async getHorsesByParents(parentName) {
+  static async getHorsesByParents(parentName, limit, offset) {
     try {
       const horses = await Horse.findAndCountAll({
         where: {
@@ -67,7 +67,12 @@ module.exports = class HorseService {
               mother: parentName
             }
           ]
-        }
+        },
+        order: [
+          ['id', 'ASC']
+        ],
+        limit: limit,
+        offset: offset
       });
       return horses;
     } catch (error) {

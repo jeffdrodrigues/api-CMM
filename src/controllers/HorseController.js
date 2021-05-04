@@ -58,10 +58,20 @@ exports.delete = async (req, res, next) => {
 };
 
 exports.getByParents = async (req, res, next) => {
+
   let name = req.params.name;
+  let limit = parseInt(req.query.limit || 50);
+  let offset = parseInt(req.query.offset || 0);
+
+  //valida os parâmetros de paginação
+  if (limit < 10 || limit > 50)
+    return res.status(400).json("O valor para o parâmetro 'limit' deve estar entre 10 e 50!");
+
+  if (offset < 0)
+    return res.status(400).json("O valor para o parâmetro 'offset' não pode ser menor que zero!");
 
   try {
-    const horses = await HorseService.getHorsesByParents(name);
+    const horses = await HorseService.getHorsesByParents(name, limit, offset);
     if (!horses) {
       return res.status(404).json("This horse has no published children!");
     }
