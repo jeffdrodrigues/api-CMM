@@ -1,4 +1,6 @@
 const app = require("./app");
+const port = process.env.PORT || 3000;
+
 /*
 //Sequelize: sincroniza o banco de dados
 (async () => {
@@ -11,9 +13,6 @@ const app = require("./app");
     console.log(error);
   }
 })();*/
-
-
-const port = process.env.PORT || 3000;
 
 app.listen(port, function () {
   console.log(`app listening on port ${port}`);
