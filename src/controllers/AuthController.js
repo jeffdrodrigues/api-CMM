@@ -4,9 +4,7 @@ exports.post = async (req, res, next) => {
   try {
     const token = await AuthService.generateToken(req.body.user, req.body.pwd);
 
-    if (token) {
-      const id = 1; //esse id viria do banco de dados    
-      
+    if (token) {      
       console.log('Token gerado com sucesso!');
       res.status(200).send({ auth: true, token: token });
     }else{

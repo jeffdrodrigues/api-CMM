@@ -1,4 +1,5 @@
 const HorseService = require("../services/HorseService");
+const security = require("../security/authorization");
 
 exports.get = async (req, res, next) => {
   try {
@@ -13,7 +14,7 @@ exports.get = async (req, res, next) => {
 };
 
 exports.getById = async (req, res, next) => {
-  let id = req.params.id;
+  const id = req.params.id;
 
   try {
     const horse = await HorseService.getHorseById(id);
@@ -24,7 +25,7 @@ exports.getById = async (req, res, next) => {
 };
 
 exports.getByName = async (req, res, next) => {
-  let name = req.params.name;
+  const name = req.params.name;
 
   try {
     const horses = await HorseService.getHorsesByName(name);
@@ -38,7 +39,15 @@ exports.getByName = async (req, res, next) => {
 };
 
 exports.post = async (req, res, next) => {
-  try {
+  const profile = req.decoded.profile;
+
+  try {  
+    const authorized = await security.authorization(profile);
+
+    if (!authorized){
+      return res.status(403).json({ error: "Usuário não autorizado!"});
+    }
+
     const createdHorse = await HorseService.createHorse(req.body);
     res.status(201).json(createdHorse);
   } catch (error) {
@@ -47,9 +56,16 @@ exports.post = async (req, res, next) => {
 };
 
 exports.delete = async (req, res, next) => {
-  let id = req.params.id;
+  const id = req.params.id;
+  const profile = req.decoded.profile;    
 
   try {
+    const authorized = await security.authorization(profile);
+
+    if (!authorized){
+      return res.status(403).json({ error: "Usuário não autorizado!"});
+    }
+
     const deleteResponse = await HorseService.deleteHorse(id);
     res.json(deleteResponse);
   } catch (error) {
@@ -59,9 +75,9 @@ exports.delete = async (req, res, next) => {
 
 exports.getByParents = async (req, res, next) => {
 
-  let name = req.params.name;
-  let limit = parseInt(req.query.limit || 50);
-  let offset = parseInt(req.query.offset || 0);
+  const name = req.params.name;
+  const limit = parseInt(req.query.limit || 50);
+  const offset = parseInt(req.query.offset || 0);
 
   //valida os parâmetros de paginação
   if (limit < 10 || limit > 50)
@@ -82,9 +98,16 @@ exports.getByParents = async (req, res, next) => {
 };
 
 exports.put = async (req, res, next) => {
-  let id = req.params.id;
+  const id = req.params.id;
+  const profile = req.decoded.profile;
 
   try {
+    const authorized = await security.authorization(profile);
+
+    if (!authorized){
+      return res.status(403).json({ error: "Usuário não autorizado!"});
+    }
+    
     const horse = {};
     horse.name = req.body.name;
     horse.father = req.body.father;

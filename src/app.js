@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const auth = require('./controllers/AuthController');
 
 //Rotas
 const indexRoute = require("./routes/index");
@@ -17,10 +16,6 @@ app.use(
 
 app.use("/", indexRoute);
 app.use("/auth", authRoute);
-
-//Adiciono o Middleware para autenticar apenas as rotas abaixo
-app.use(auth.authenticateJWT);
-
 app.use("/horses", horseRoute);
 
 module.exports = app;
