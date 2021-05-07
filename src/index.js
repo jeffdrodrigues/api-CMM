@@ -1,4 +1,6 @@
 const app = require("./app");
+require("dotenv-safe").config();
+
 const port = process.env.PORT || 3000;
 
 /*

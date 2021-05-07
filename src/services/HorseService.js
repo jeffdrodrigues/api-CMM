@@ -51,7 +51,7 @@ module.exports = class HorseService {
       const deletedResponse = await Horse.destroy({ where: { id: horseId } });
       return deletedResponse;
     } catch (error) {
-      console.log(`Could not delete todo ${error}`);
+      console.log(`Could not delete horse ${error}`);
     }
   }
 
@@ -86,7 +86,7 @@ module.exports = class HorseService {
 
       return updateResponse;
     } catch (error) {
-      console.log(`Could not update Horse ${error}`);
+      console.log(`Could not update horse ${error}`);
     }
   }
 

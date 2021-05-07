@@ -4,7 +4,7 @@ exports.get = async (req, res, next) => {
   try {
     const horses = await HorseService.getAllHorses();
     if (!horses) {
-      return res.status(404).json("There are no horses published yet!");
+      return res.status(404).json("Não existem animais cadastrados!");
     }
     res.json(horses);
   } catch (error) {
@@ -29,7 +29,7 @@ exports.getByName = async (req, res, next) => {
   try {
     const horses = await HorseService.getHorsesByName(name);
     if (!horses) {
-      return res.status(404).json("There are no horses published yet!");
+      return res.status(404).json("Não existem animais cadastrados com o nome informado!");
     }
     res.json(horses);
   } catch (error) {
@@ -73,7 +73,7 @@ exports.getByParents = async (req, res, next) => {
   try {
     const horses = await HorseService.getHorsesByParents(name, limit, offset);
     if (!horses) {
-      return res.status(404).json("This horse has no published children!");
+      return res.status(404).json("Este animal não possue filhos cadastrados!");
     }
     res.json(horses);
   } catch (error) {
