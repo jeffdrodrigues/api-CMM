@@ -9,7 +9,7 @@ module.exports = function(req, res, next){
       const token = authHeader.split(' ')[1];
       const decoded = jwt.verify(token, process.env.SECRET, function (err, decoded) {
         if (err) {
-          res.status(403).send({ success: false, message: 'Falha na autenticação!' });
+          res.status(401).send({ success: false, message: 'Authentication failed!' });
         } else {
           //se tudo correr bem, salva a requisição para o uso em outras rotas
 
@@ -22,7 +22,7 @@ module.exports = function(req, res, next){
       });
 
     } else {
-      res.status(403).send({ success: false, message: 'Não foi informado um token!' });
+      res.status(401).send({ success: false, message: 'No token was entered!' });
     }
   }
   catch (error) {
