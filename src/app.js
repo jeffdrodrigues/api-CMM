@@ -16,6 +16,6 @@ app.use(
 
 app.use("/", indexRoute);
 app.use("/auth", authRoute);
-app.use("/horses", horseRoute);
+app.use("/horse", horseRoute);
 
 module.exports = app;
