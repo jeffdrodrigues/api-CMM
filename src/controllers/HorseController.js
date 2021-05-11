@@ -2,8 +2,18 @@ const HorseService = require("../services/HorseService");
 const security = require("../security/authorization");
 
 exports.get = async (req, res, next) => {
+  const limit = parseInt(req.query.limit || 50);
+  const offset = parseInt(req.query.offset || 0);
+
+  //valida os parâmetros de paginação
+  if (limit < 10 || limit > 50)
+    return res.status(400).json("The value for the 'limit' parameter must be between 10 and 50!");
+
+  if (offset < 0)
+    return res.status(400).json("The value for the 'offset' parameter cannot be less than zero!");
+  
   try {
-    const horses = await HorseService.getAllHorses();
+    const horses = await HorseService.getAllHorses(limit, offset);
     if (horses.count === 0) {
       return res.status(404).json("Horse not found!");
     }

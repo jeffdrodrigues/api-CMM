@@ -1,12 +1,22 @@
 const Horse = require("../models/Horse");
 const Sequelize = require('sequelize');
+const { json } = require("sequelize");
 const Op = Sequelize.Op;
 
 module.exports = class HorseService {
-  static async getAllHorses() {
+  static async getAllHorses(limit, offset) {
     try {
-      const allHorses = await Horse.findAndCountAll();
-      return allHorses;
+      const allHorses = await Horse.findAndCountAll({        
+        order: [
+          ['id', 'ASC']
+        ],
+        limit: limit,
+        offset: offset
+      });
+
+      return json({pageinfo:{offset: offset, limit: limit}, horses: allHorses})
+
+      //return allHorses;
     } catch (error) {
       console.log(`Could not fetch horses ${error}`);
     }
@@ -74,7 +84,7 @@ module.exports = class HorseService {
         limit: limit,
         offset: offset
       });
-      return horses;
+      return json({pageinfo:{offset: offset, limit: limit}, horses: horses})
     } catch (error) {
       console.log(`Could not fetch horses ${error}`);
     }
