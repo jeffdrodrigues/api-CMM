@@ -130,11 +130,11 @@ exports.put = async (req, res, next) => {
 
     const updatedHorse = await HorseService.updateHorse(id, horse);
 
-    if (updatedHorse.nModified === 0) {
+    if (updatedHorse[0] === 0) {
       return res.status(404).json({error: 'Horse not found!'});
     }
 
-    res.status(200).json({'updated records': updatedHorse});
+    res.status(200).json({'Updated records': updatedHorse[0]});
 
   } catch (error) {
     res.status(500).json({ error: error });
