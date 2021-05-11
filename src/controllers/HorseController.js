@@ -4,10 +4,10 @@ const security = require("../security/authorization");
 exports.get = async (req, res, next) => {
   try {
     const horses = await HorseService.getAllHorses();
-    if (!horses) {
+    if (horses.count === 0) {
       return res.status(404).json("Horse not found!");
     }
-
+    
     res.status(200).json(horses);
 
   } catch (error) {
@@ -36,7 +36,8 @@ exports.getByName = async (req, res, next) => {
 
   try {
     const horses = await HorseService.getHorsesByName(name);
-    if (!horses) {
+
+    if (horses.count === 0) {
       return res.status(404).json("Horse not found!");
     }
     res.status(200).json(horses);
@@ -95,7 +96,7 @@ exports.getByParents = async (req, res, next) => {
 
   try {
     const horses = await HorseService.getHorsesByParents(name, limit, offset);
-    if (!horses) {
+    if (horses.count === 0) {
       return res.status(404).json("Horse not found!");
     }
     res.status(200).json(horses);

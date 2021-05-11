@@ -5,7 +5,7 @@ const generateToken = async function(user, pwd) {
 
       const profile = validateUser(user, pwd);
       
-      if (profile != null){
+      if (profile !== null){
         const token = jwt.sign(
           {
             user,
