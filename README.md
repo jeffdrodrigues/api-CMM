@@ -1,5 +1,5 @@
 # Mangalarga Marchador API 
-![Cavalo](/imgs/cavalo-removebg-preview.png)
+![Cavalo](/imgs/cavalo-removebg-preview_small.jpg)
 
 ## Sobre o projeto
 
