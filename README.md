@@ -4,7 +4,7 @@
 
 Esta API tem por objetivo possibilitar o cadastro e pesquisa de dados de cavalos da raça Mangalarga Marchador registrados na Associação Brasileira dos Criadores do Cavalo Mangalarga Marchador (ABCCMM). De forma fácil podemos consultar um animal por um identificador, pelo seu nome ou pelo nome de seu pai ou mãe. Utilizando estes recursos é possível montar uma árvore genealógica completa de um animal da raça, por exemplo.
 
-## 🛠 Tecnologias
+## Tecnologias
 - NodeJS
 - Express
 - jsonwebtoken
