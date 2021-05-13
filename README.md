@@ -19,10 +19,10 @@ Esta API tem por objetivo possibilitar o cadastro e pesquisa de dados de cavalos
     |   ├── src
     |       ├── controllers (realiza as validações dos dados que chegam do services)
     |       ├── db          (realiza a conexão com o BD)    
-    |       ├── models      (define a estrutura de dado e faz acesso ao DB)
+    |       ├── models      (define a estrutura de dados e faz acesso ao DB)
     |       ├── routes      (declaração de todas as rotas da API)
     |       ├── security    (classes para autenticação e autorização)
-    |       ├── services    (Fazem acesso aos dados utilizando os modelos)
+    |       ├── services    (faz acesso aos dados utilizando o models)
     |   ├── .env            (variáveis de ambiente onde estão armazenados a SECRET 
     |   ├── .env.example     e o tempo de expiração para geração do TOKEN)
 
