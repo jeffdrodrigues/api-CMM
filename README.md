@@ -1,4 +1,5 @@
-# Mangalarga Marchador API
+# Mangalarga Marchador API 
+![Cavalo](/imgs/cavalo-removebg-preview.png)
 
 ## Sobre o projeto
 
@@ -23,8 +24,11 @@ Esta API tem por objetivo possibilitar o cadastro e pesquisa de dados de cavalos
     |       ├── routes      (declaração de todas as rotas da API)
     |       ├── security    (classes para autenticação e autorização)
     |       ├── services    (faz acesso aos dados utilizando o models)
+    |       ├── app.js      (orgniza as rotas e facilita o versionamento - obs: versionamento ainda precisa ser aprimorado)
+    |       ├── index.js    (arquivo principal da API, responsável pela criação do serviço)
     |   ├── .env            (variáveis de ambiente onde estão armazenados a SECRET 
     |   ├── .env.example     e o tempo de expiração para geração do TOKEN)
+    |   ├── package.json    (possui as informações do projeto, bem como suas dependências)
 
 ## Definições
 1. #### Tempo de expiração do token
@@ -45,4 +49,3 @@ Esta API tem por objetivo possibilitar o cadastro e pesquisa de dados de cavalos
 
 ## Documentação
 Swagger: [Mangalarga Marchador API](https://app.swaggerhub.com/apis-docs/jeffDuarte/MangalargaMarchador/v1) 
-
