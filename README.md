@@ -1,4 +1,4 @@
-# ![Cavalo](/imgs/cavalo-removebg-preview_small.jpg?w=127&h=108)  Mangalarga Marchador API
+# ![Cavalo](/images/cavalo-removebg-preview_small.jpg?w=127&h=108)  Mangalarga Marchador API
 
 ## Sobre o projeto
 
